@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Markup Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-active { background-color: #2563EB; color: white; }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Admin Navigation -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="font-bold text-xl text-blue-600">Markup.az</span>
+                    <span class="ml-4 text-sm text-gray-500 border-l pl-4">Admin Panel</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="previewSite()" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition">
+                        Ön İzləmə
+                    </button>
+                    <button onclick="saveSite()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        Dəyişiklikləri Saxla
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white shadow-lg">
+            <div class="p-6">
+                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Komponentlər</h3>
+                <div class="space-y-2">
+                    <button onclick="showTab('hero')" id="tab-hero" class="tab-active w-full text-left px-4 py-2 rounded-lg transition">
+                        Ana Səhifə Hero
+                    </button>
+                    <button onclick="showTab('stats')" id="tab-stats" class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-100 transition">
+                        Statistika
+                    </button>
+                    <button onclick="showTab('services')" id="tab-services" class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-100 transition">
+                        Xidmətlər
+                    </button>
+                    <button onclick="showTab('portfolio')" id="tab-portfolio" class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-100 transition">
+                        Portfolio
+                    </button>
+                    <button onclick="showTab('contact')" id="tab-contact" class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-100 transition">
+                        Əlaqə
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-y-auto">
+            <div class="max-w-5xl mx-auto p-8">
+                
+                <!-- Hero Section Editor -->
+                <div id="content-hero" class="content-section">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Ana Səhifə Hero Redaktə</h2>
+                    
+                    <div class="bg-white rounded-lg shadow-sm p-6 space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Üst Başlıq</label>
+                            <input type="text" id="hero-subtitle" value="Rəqəmsal Agentlik" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Əsas Başlıq (1-ci hissə)</label>
+                            <input type="text" id="hero-title-1" value="Cəmi 15 gün ərzində" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Əsas Başlıq (vurğulanmış hissə)</label>
+                            <input type="text" id="hero-title-2" value="Tam Funksional Veb Sayt" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Təsvir</label>
+                            <textarea id="hero-description" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">Komandamız sizə rəqəmsal marketinq, SEO, SEM, SMM və məzmun istehsalı üzrə peşəkar xidmət təklif edir. Brendinizin uğuru bizim uğurumuzdur.</textarea>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Düymə 1 Mətni</label>
+                                <input type="text" id="hero-btn-1" value="Layihəyə Başla" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Düymə 2 Mətni</label>
+                                <input type="text" id="hero-btn-2" value="İşlərimizə Bax" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Şəkil URL</label>
+                            <input type="text" id="hero-image" value="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Section Editor -->
+                <div id="content-stats" class="content-section hidden">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Statistika Redaktə</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-lg shadow-sm p-6">
+                            <h3 class="font-semibold mb-4">Məmnun Müştəri</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Rəqəm</label>
+                                    <input type="text" id="stat-clients-number" value="100+" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Etiket</label>
+                                    <input type="text" id="stat-clients-label" value="Məmnun Müştəri" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow-sm p-6">
+                            <h3 class="font-semibold mb-4">Təhvil Verilmiş Layihə</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Rəqəm</label>
+                                    <input type="text" id="stat-projects-number" value="150+" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Etiket</label>
+                                    <input type="text" id="stat-projects-label" value="Təhvil Verilmiş Layihə" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow-sm p-6">
+                            <h3 class="font-semibold mb-4">Tərəfdaş</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Rəqəm</label>
+                                    <input type="text" id="stat-partners-number" value="15+" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Etiket</label>
+                                    <input type="text" id="stat-partners-label" value="Tərəfdaş" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow-sm p-6">
+                            <h3 class="font-semibold mb-4">Texniki Dəstək</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Rəqəm</label>
+                                    <input type="text" id="stat-support-number" value="24/7" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Etiket</label>
+                                    <input type="text" id="stat-support-label" value="Texniki Dəstək" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Section Editor -->
+                <div id="content-services" class="content-section hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900">Xidmətlər Redaktə</h2>
+                        <button onclick="addService()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                            + Xidmət Əlavə Et
+                        </button>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Bölmə Başlığı</label>
+                                <input type="text" id="services-title" value="Təkliflərimiz Nələrdir?" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Bölmə Təsviri</label>
+                                <input type="text" id="services-subtitle" value="Sizin rəqəmsal ehtiyaclarınız üçün hərtərəfli həllər təklif edirik." class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="services-list" class="space-y-4">
+                        <!-- Services will be dynamically added here -->
+                    </div>
+                </div>
+
+                <!-- Portfolio Section Editor -->
+                <div id="content-portfolio" class="content-section hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900">Portfolio Redaktə</h2>
+                        <button onclick="addPortfolio()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                            + Layihə Əlavə Et
+                        </button>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Bölmə Başlığı</label>
+                                <input type="text" id="portfolio-title" value="Son Layihələrimiz" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Bölmə Təsviri</label>
+                                <input type="text" id="portfolio-subtitle" value="Müştərilərimiz üçün yaratdığımız uğurlu həllər." class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="portfolio-list" class="space-y-4">
+                        <!-- Portfolio items will be dynamically added here -->
+                    </div>
+                </div>
+
+                <!-- Contact Section Editor -->
+                <div id="content-contact" class="content-section hidden">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Əlaqə Məlumatları Redaktə</h2>
+                    
+                    <div class="bg-white rounded-lg shadow-sm p-6 space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Başlıq</label>
+                            <input type="text" id="contact-title" value="Layihənizi Müzakirə Edək" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Təsvir</label>
+                            <textarea id="contact-description" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg">Bizimlə əlaqə saxlayın, komandamız sizə ən qısa zamanda geri dönüş etsin.</textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ünvan</label>
+                            <input type="text" id="contact-address" value="Bakı ş., Nərimanov ray. Əhməd Rəcəbli küç. 33" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Telefon</label>
+                            <input type="text" id="contact-phone" value="+994 70 250 10 04" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="contact-email" value="office@markup.az" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data storage
+        let siteData = {
+            services: [
+                { title: 'Veb Saytların Hazırlanması', description: 'Rəqəmsal dünyada şirkətinizi təqdim edən, tam funksional və sürətli saytlar.' },
+                { title: 'UI-UX Dizayn', description: 'İstifadəçi rahatlığı və müasir interfeys həlləri ilə müştəri məmnuniyyətini artırın.' },
+                { title: 'Rəqəmsal Marketinq', description: 'Şirkətlərə müştərilərə çatmaq və diqqət cəlb etmək üçün effektiv strategiyalar.' },
+                { title: 'Brendinq Xidməti', description: 'Brendinq və brendbook xidmətləri ilə marka loyallığını inkişaf etdirin.' },
+                { title: 'SMM Xidməti', description: 'Sosial mediada güclü varlıq yaradaraq satışlarınızı yüksəldin.' },
+                { title: 'ERP və CRM Sistemləri', description: 'Biznes proseslərini optimallaşdırmaq üçün fərdi proqram təminatı.' }
+            ],
+            portfolio: [
+                { title: 'TAN İnşaat', category: 'Veb Sayt', image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=TAN+Inshaat' },
+                { title: 'Duaks Aksessuarları', category: 'E-ticarət', image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=Duaks+Mobile' },
+                { title: 'Parıltı MMC', category: 'Korporativ Sayt', image: 'https://placehold.co/600x400/e2e8f0/1e293b?text=Parilti+MMC' }
+            ]
+        };
+
+        // Tab switching
+        function showTab(tabName) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            document.querySelectorAll('[id^="tab-"]').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('hover:bg-gray-100');
+            });
+            
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            document.getElementById('tab-' + tabName).classList.add('tab-active');
+            document.getElementById('tab-' + tabName).classList.remove('hover:bg-gray-100');
+        }
+
+        // Render services
+        function renderServices() {
+            const container = document.getElementById('services-list');
+            container.innerHTML = '';
+            
+            siteData.services.forEach((service, index) => {
+                const serviceCard = `
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-semibold text-lg">Xidmət ${index + 1}</h3>
+                            <button onclick="removeService(${index})" class="text-red-600 hover:text-red-700">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Başlıq</label>
+                                <input type="text" value="${service.title}" onchange="updateService(${index}, 'title', this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Təsvir</label>
+                                <textarea rows="2" onchange="updateService(${index}, 'description', this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg">${service.description}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += serviceCard;
+            });
+        }
+
+        function addService() {
+            siteData.services.push({ title: 'Yeni Xidmət', description: 'Xidmət təsviri...' });
+            renderServices();
+        }
+
+        function removeService(index) {
+            if (confirm('Bu xidməti silmək istədiyinizdən əminsiniz?')) {
+                siteData.services.splice(index, 1);
+                renderServices();
+            }
+        }
+
+        function updateService(index, field, value) {
+            siteData.services[index][field] = value;
+        }
+
+        // Render portfolio
+        function renderPortfolio() {
+            const container = document.getElementById('portfolio-list');
+            container.innerHTML = '';
+            
+            siteData.portfolio.forEach((item, index) => {
+                const portfolioCard = `
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-semibold text-lg">Layihə ${index + 1}</h3>
+                            <button onclick="removePortfolio(${index})" class="text-red-600 hover:text-red-700">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Başlıq</label>
+                                <input type="text" value="${item.title}" onchange="updatePortfolio(${index}, 'title', this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Kateqoriya</label>
+                                <input type="text" value="${item.category}" onchange="updatePortfolio(${index}, 'category', this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Şəkil URL</label>
+                                <input type="text" value="${item.image}" onchange="updatePortfolio(${index}, 'image', this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += portfolioCard;
+            });
+        }
+
+        function addPortfolio() {
+            siteData.portfolio.push({ title: 'Yeni Layihə', category: 'Kateqoriya', image: 'https://placehold.co/600x400' });
+            renderPortfolio();
+        }
+
+        function removePortfolio(index) {
+            if (confirm('Bu layihəni silmək istədiyinizdən əminsiniz?')) {
+                siteData.portfolio.splice(index, 1);
+                renderPortfolio();
+            }
+        }
+
+        function updatePortfolio(index, field, value) {
+            siteData.portfolio[index][field] = value;
+        }
+
+        // Save and preview functions
+        function saveSite() {
+            // Collect all data from inputs
+            const allData = {
+                hero: {
+                    subtitle: document.getElementById('hero-subtitle').value,
+                    title1: document.getElementById('hero-title-1').value,
+                    title2: document.getElementById('hero-title-2').value,
+                    description: document.getElementById('hero-description').value,
+                    btn1: document.getElementById('hero-btn-1').value,
+                    btn2: document.getElementById('hero-btn-2').value,
+                    image: document.getElementById('hero-image').value
+                },
+                stats: {
+                    clients: {
+                        number: document.getElementById('stat-clients-number').value,
+                        label: document.getElementById('stat-clients-label').value
+                    },
+                    projects: {
+                        number: document.getElementById('stat-projects-number').value,
+                        label: document.getElementById('stat-projects-label').value
+                    },
+                    partners: {
+                        number: document.getElementById('stat-partners-number').value,
+                        label: document.getElementById('stat-partners-label').value
+                    },
+                    support: {
+                        number: document.getElementById('stat-support-number').value,
+                        label: document.getElementById('stat-support-label').value
+                    }
+                },
+                services: {
+                    title: document.getElementById('services-title').value,
+                    subtitle: document.getElementById('services-subtitle').value,
+                    items: siteData.services
+                },
+                portfolio: {
+                    title: document.getElementById('portfolio-title').value,
+                    subtitle: document.getElementById('portfolio-subtitle').value,
+                    items: siteData.portfolio
+                },
+                contact: {
+                    title: document.getElementById('contact-title').value,
+                    description: document.getElementById('contact-description').value,
+                    address: document.getElementById('contact-address').value,
+                    phone: document.getElementById('contact-phone').value,
+                    email: document.getElementById('contact-email').value
+                }
+            };
+            
+            console.log('Saved data:', allData);
+            alert('Dəyişikliklər uğurla saxlanıldı!');
+            // Here you would typically send this data to your backend
+        }
+
+        function previewSite() {
+            alert('Ön izləmə funksiyası tezliklə əlavə olunacaq!');
+            // This would open the user-facing site in a new tab
+        }
+
+        // Initialize
+        renderServices();
+        renderPortfolio();
+    </script>
+
+</body>
+</html>
